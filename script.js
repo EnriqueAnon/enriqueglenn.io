@@ -1,15 +1,39 @@
-function showMessage() {
-    document.getElementById("welcomeText").innerHTML =
-    "Thanks for visiting my website.";
-}
+const texts = [
+    "Web Developer",
+    "Computer Technician",
+    "IT Student",
+    "Tech Enthusiast"
+];
 
-// Navbar background when scrolling
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
 
-    if (window.scrollY > 50) {
-        navbar.classList.add("shadow");
-    } else {
-        navbar.classList.remove("shadow");
+(function type(){
+
+    if(count === texts.length){
+        count = 0;
     }
-});
+
+    currentText = texts[count];
+
+    letter = currentText.slice(0, ++index);
+
+    document.querySelector(".typing").textContent = letter;
+
+    if(letter.length === currentText.length){
+
+        count++;
+
+        index = 0;
+
+        setTimeout(type, 1000);
+
+    }else{
+
+        setTimeout(type, 100);
+
+    }
+
+})();
